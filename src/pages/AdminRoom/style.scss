@@ -1,0 +1,144 @@
+#page-admin {
+  header {
+    padding: 1.5rem;
+    border-bottom: 0.0625rem solid var(--white-light);
+
+    .content-admin {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+
+      > img {
+        max-height: 45px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      > div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  main {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 1.5rem;
+
+    .admin-title {
+      margin: 2rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      strong {
+        font-family: "Poppies", sans-serif;
+        font-size: 1.5rem;
+        color: var(--text);
+      }
+
+      span {
+        background: var(--pink);
+        border-radius: 1.25rem;
+        padding: 0.5rem 1rem;
+        color: var(--white);
+        font-weight: 500;
+        font-size: 0.875rem;
+      }
+    }
+
+    form {
+      display: flex;
+      gap: 1rem;
+      position: absolute;
+      bottom: 10px;
+      left: 32px;
+      width: 90%;
+      padding-right: 1.5rem;
+
+      textarea {
+        width: 100%;
+        border: none;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background: var(--white-light);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      }
+
+      .form-admin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+
+        .user-admin {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+          }
+
+          > span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text);
+          }
+        }
+
+        span {
+          font-size: 0.875rem;
+          color: var(--text);
+          font-weight: 500;
+
+          button {
+            background: transparent;
+            color: var(--purple);
+            text-decoration: underline;
+            font-size: 0.875rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .admin-list {
+      margin-top: 2rem;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .content-admin {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content-admin {
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .admin-list {
+      > div {
+        display: block;
+      }
+
+      form {
+        padding-right: 2rem;
+      }
+    }
+  }
+}

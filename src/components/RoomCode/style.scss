@@ -1,0 +1,36 @@
+.room-code {
+  height: 45px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  background: var(--white);
+  border: 0.0625rem solid var(--purple);
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  div {
+    background: var(--purple);
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: 0.5s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  span {
+    display: block;
+    align-self: center;
+    flex: 1;
+    padding: 0 1rem 0 0.75rem;
+    width: 210px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
