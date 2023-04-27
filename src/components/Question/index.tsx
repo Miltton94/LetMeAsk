@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import classnames from "classnames";
 import "./style.scss";
 
@@ -8,6 +9,7 @@ type QuestionProps = {
     avatar: string;
   };
   content: string;
+  answer: string;
   children?: ReactNode;
   isAnswered?: boolean;
   isHighlighted?: boolean;
@@ -17,6 +19,7 @@ const Question = ({
   author,
   content,
   children,
+  answer,
   isAnswered = false,
   isHighlighted = false,
 }: QuestionProps) => {
@@ -27,7 +30,14 @@ const Question = ({
         { awswered: isAnswered },
         { highlighted: isHighlighted && !isAnswered }
       )}>
-      <p>{content}</p>
+      <span>{content}</span>
+
+      {answer && (
+        <p>
+          <span>Resposta:</span>
+          {answer}
+        </p>
+      )}
 
       <footer>
         <div className="user-info">

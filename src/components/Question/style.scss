@@ -3,6 +3,9 @@
   border-radius: 0.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 
   position: relative;
 
@@ -25,13 +28,18 @@
 
   p {
     color: var(--text);
+
+    span {
+      margin-right: 0.3rem;
+      font-weight: 700;
+    }
   }
 
   footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     .user-info {
       display: flex;

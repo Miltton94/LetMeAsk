@@ -115,6 +115,7 @@ const Room = () => {
                 key={question.id}
                 author={question.author}
                 content={question.content}
+                answer={question.answer}
                 isAnswered={question.isAnswered}
                 isHighlighted={question.isHighlighted}>
                 {!question.isAnswered && (

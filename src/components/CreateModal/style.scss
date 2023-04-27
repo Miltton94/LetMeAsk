@@ -1,0 +1,70 @@
+.overlay {
+  background: #11181c;
+  opacity: 0.3;
+  position: fixed;
+  inset: 0;
+}
+
+.dialog-content {
+  background-color: var(--gray);
+  position: fixed;
+  padding: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  max-width: 480px;
+  width: 88%;
+
+  .dialog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    textarea {
+      width: 100%;
+      border: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background: var(--white-light);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      resize: vertical;
+      margin-bottom: 0.5rem;
+    }
+
+    > button {
+      max-width: 250px;
+      width: 100%;
+      align-self: center;
+    }
+
+    .iconButton {
+      background-color: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      opacity: 0.9;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
+// fixed bg-[#2a2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25">
+//   <Dialog.Title className="text-3xl font-black">
+//     Publique um anúcio
+//   </Dialog.Title>

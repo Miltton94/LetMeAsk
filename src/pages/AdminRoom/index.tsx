@@ -3,29 +3,25 @@ import deleteImg from "../../assets/delete.svg";
 import checkImg from "../../assets/check.svg";
 import answerImg from "../../assets/answer.svg";
 
-import { useForm } from "react-hook-form";
-
-import { useState } from "react";
-
 import Button from "../../components/Button";
 import RoomCode from "../../components/RoomCode";
 
 import { useParams, useNavigate } from "react-router-dom";
 
 import { database } from "../../services/firebase";
-import { remove, ref, update, push } from "firebase/database";
+import { remove, ref, update } from "firebase/database";
 
 import "./style.scss";
 import Question from "../../components/Question";
 
 import { useRoom } from "../../hooks/useRoom";
 
+import * as Dialog from "@radix-ui/react-dialog";
+import CreateModal from "../../components/CreateModal";
+
 const AdminRoom = () => {
-  const { register, handleSubmit } = useForm();
   const { id } = useParams<string>();
   const { title, dataQuestion } = useRoom(id);
-
-  const [answer, setAnswer] = useState("");
 
   const navigate = useNavigate();
 
@@ -40,12 +36,6 @@ const AdminRoom = () => {
     }
   }
 
-  async function handleHighLightQuestion(QuestionId: string) {
-    await update(ref(database, `rooms/${id}/questions/${QuestionId}`), {
-      isHighlighted: true,
-    });
-  }
-
   async function handleDeleteQuestion(QuestionId: string) {
     if (window.confirm("Are you sure you want to delete")) {
       await remove(ref(database, `rooms/${id}/questions/${QuestionId}`));
@@ -58,15 +48,6 @@ const AdminRoom = () => {
     });
 
     navigate("/");
-  };
-
-  const handleResponseAnswer = async (QuestionId: string) => {
-    await push(
-      ref(database, `rooms/${id}/questions/${QuestionId}/answer`),
-      answer
-    );
-    console.log(answer);
-    setAnswer("");
   };
 
   return (
@@ -106,18 +87,26 @@ const AdminRoom = () => {
                   key={question.id}
                   author={question.author}
                   content={question.content}
+                  answer={question.answer}
                   isAnswered={question.isAnswered}
                   isHighlighted={question.isHighlighted}>
                   {!question.isAnswered && (
                     <>
-                      <button
-                        type="button"
-                        onClick={() => handleHighLightQuestion(question.id)}>
-                        <img
-                          src={answerImg}
-                          alt="Responder Pergunta"
+                      <Dialog.Root>
+                        <Dialog.Trigger type="button">
+                          <img
+                            src={answerImg}
+                            alt="Responder Pergunta"
+                          />
+                        </Dialog.Trigger>
+
+                        <CreateModal
+                          key={question.id}
+                          title={question.content}
+                          questionId={question.id}
+                          id={id}
                         />
-                      </button>
+                      </Dialog.Root>
 
                       <button
                         type="button"
